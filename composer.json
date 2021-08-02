@@ -1,0 +1,19 @@
+{
+    "name": "web/michael",
+    "scripts": {
+        "serve": "php -S localhost:5000 -t public_html"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app",
+            "Framework\\": "framework"
+        }
+    },
+    "authors": [
+        {
+            "name": "Michael Makina",
+            "email": "mmakina@protonmail.com"
+        }
+    ],
+    "require": {}
+}
