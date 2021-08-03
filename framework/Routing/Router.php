@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Framework\Routing;
 
 
@@ -13,6 +11,7 @@ class Router{
         "GET" => [],
         "POST" => [],
         "PATCH" => [],
+        "PUT" => [],
         "DELETE" => [],
         "404" => [],
         "400" => []
@@ -31,7 +30,9 @@ class Router{
      */
     private function addRoute(string $requestMethod, string $path, $closure){
 
-        array_push($this->routes[$requestMethod],[$path => $closure]);
+        //array_push($this->routes[$requestMethod],[$path => $closure]);
+
+        $this->routes[$requestMethod] += [$path => $closure];
 
     }
 
@@ -114,6 +115,12 @@ class Router{
             array_keys($this->routes["400"]),
 
         );
+
+        echo "<pre>";
+        var_export(array_merge(array_keys($this->routes["GET"])));
+        var_export($this->paths);
+        echo "</pre>";
+
     }
 
     /**
@@ -156,7 +163,8 @@ class Router{
 
     }
 
-    public function __construct(){
-
+    public function __construct( ){
+        $this->routes["404"] = [fn() => include __DIR__ . "/../../src/includes/404.php"];
+        $this->routes["400"] = [fn() => include __DIR__ . "/../../src/includes/400.php"];
     }
 }
