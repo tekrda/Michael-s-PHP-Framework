@@ -116,10 +116,6 @@ class Router{
 
         );
 
-        echo "<pre>";
-        var_export(array_merge(array_keys($this->routes["GET"])));
-        var_export($this->paths);
-        echo "</pre>";
 
     }
 
@@ -136,19 +132,19 @@ class Router{
 
     private function FindRoutesAndReturnRelevantData(string $requestMethod, string $path){
 
-        if(isset($this->paths[$requestMethod][$path])){
+        if(isset($this->routes[$requestMethod][$path])){
 
-            $this->paths[$requestMethod][$path]();
+            $this->routes[$requestMethod][$path]();
 
         }
         elseif (in_array($path,$this->paths)){
 
-            echo "<h1> Error 400 </h1>";
+            $this->routes["400"]();
 
         }
         else{
 
-            echo "<h1> Error 404 </h1>";
+            $this->routes["404"]();
 
         }
     }

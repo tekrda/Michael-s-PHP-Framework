@@ -18,10 +18,11 @@ $router->get("/contact-us",function (){
 
 $router->get("/about-us",function (){
 
-    echo "<h1>Hello World from About Us Route </h1>";
+    echo "<h1>Hello World from About Us Route </h1><br>";
 
 });
 
 $router->RunApplication($_SERVER["REQUEST_METHOD"],$_SERVER["REQUEST_URI"]);
+
 
 
